@@ -1,0 +1,21 @@
+{
+    "$schema": "https://raw.githubusercontent.com/jopemachine/arvis-extension-validator/master/workflow-schema.json",
+    "creator": "jopemachine",
+    "name": "arvish-test-mock1",
+    "commands": [
+        {
+            "type": "keyword",
+            "command": "t1",
+            "title": "",
+            "subtitle": "",
+            "argType": "no",
+            "actions": [
+                {
+                    "type": "script",
+                    "modifiers": "normal",
+                    "script": "node index.js"
+                }
+            ]
+        }
+    ]
+}

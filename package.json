@@ -4,13 +4,17 @@
   "description": "Test your Arvish workflows",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "keywords": [
     "arvis",
     "arvis-extension",
     "test",
     "testing"
+  ],
+  "files": [
+    "index.js",
+    "lib"
   ],
   "author": "jopemachine",
   "license": "MIT",
@@ -20,8 +24,7 @@
     "execa": "^5.1.1",
     "find-up": "^5.0.0",
     "fs-extra": "^10.0.0",
-    "json-parse": "^1.0.3",
-    "run-node": "^2.0.0",
+    "parse-json": "^5.2.0",
     "tempy": "^1.0.1"
   },
   "devDependencies": {
@@ -32,11 +35,11 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test && npm run lint",
-      "pre-push": "npm run test && npm run lint"
+      "pre-commit": "npm run test",
+      "pre-push": "npm run test"
     }
   },
   "ava": {
-		"serial": true
-	}
+    "serial": true
+  }
 }

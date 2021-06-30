@@ -1,8 +1,15 @@
-# arvish-test ![CI](https://github.com/SamVerschueren/arvish-test/workflows/CI/badge.svg)
+# arvis-test [![BuildStatus](https://api.travis-ci.com/jopemachine/arvish-test.svg)](https://www.npmjs.com/package/arvish-test)
 
-> Test your [Arvish](https://github.com/jopemachine/arvish) workflows
+> Test your [arvish](https://github.com/jopemachine/arvish) workflows
 
-This lib is inspired and cloned from [alfy-test](https://github.com/SamVerschueren/alfy-test)
+This lib is inspired and cloned from [alfy-test](https://github.com/SamVerschueren/alfy-test).
+
+If you trying to use this lib, please ensure API is a little different from [alfy-test](https://github.com/SamVerschueren/alfy-test).
+
+* Some environment variables are not supported yet.
+
+* XML scriptfilter not supported.
+
 
 ## Install
 
@@ -19,7 +26,7 @@ import arvishTest from 'arvish-test';
 test('foo', async t => {
 	const arvish = arvishTest();
 
-	const result = await arvish('workflow input');
+	const result = await arvish("node abc.js 'some_query'");
 
 	t.deepEqual(result, [
 		{
@@ -53,13 +60,13 @@ Default: `'3.0.3'`
 
 Alfred version.
 
-### arvish(...input)
+### arvish(input)
 
 Returns a `Promise` that returns the `items` of the workflow.
 
 #### input
 
-Type: `string[]`
+Type: `string`
 
 Workflow input.
 

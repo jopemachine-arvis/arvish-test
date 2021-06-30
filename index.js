@@ -1,16 +1,14 @@
 /* eslint-disable camelcase */
 'use strict';
 const fse = require('fs-extra');
-const path = require('path');
 const execa = require('execa');
 const findUp = require('find-up');
 const tempy = require('tempy');
 const Conf = require('conf');
 const CacheConf = require('cache-conf');
-const jsonParse = require('json-parse');
+const jsonParse = require('parse-json');
 const env = require('./lib/env');
-const {ArvishTestError} = require('./lib/error');
-const mainFile = require('./lib/main-file');
+const { ArvishTestError } = require('./lib/error');
 
 module.exports = options => {
 	options = {
@@ -19,23 +17,34 @@ module.exports = options => {
 		extension_cache: tempy.directory()
 	};
 
-	const arvishTest = async (...input) => {
-		const filePath = await findUp('arvis-workflow.json');
-		const directory = path.dirname(filePath);
+	const arvishTest = async (input) => {
+		if (!input) {
+			throw new AlfyTestError('Input value must exist.');
+		}
+
+		const filePath = await findUp([
+			'arvis-workflow.json',
+			'arvis-plugin.json'
+		], {
+			allowSymlinks: false,
+			type: 'file'
+		});
+
 		const info = jsonParse(await fse.readFile(filePath, 'utf8'));
 
-		// Detect executable file
-		let file = path.join(directory, mainFile(info));
-		file = path.relative(process.cwd(), file);
+		info.type = info.commands ? 'workflow' : 'plugin';
+		info.data = options.extension_data;
+		info.cache = options.extension_cache;
 
-		const {stdout} = await execa('./node_modules/.bin/run-node', [file, ...input], {
+		// Assume in other os, node path is given in PATH.
+		const { stdout } = await execa.command(input, {
 			env: env(info, options),
 			preferLocal: true,
 			localDir: __dirname
 		});
 
 		try {
-			return JSON.parse(stdout).items;
+			return jsonParse(stdout).items;
 		} catch (_) {
 			throw new ArvishTestError('Could not parse result as JSON', stdout);
 		}

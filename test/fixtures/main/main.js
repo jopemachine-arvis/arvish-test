@@ -1,9 +1,9 @@
 'use strict';
-const alfy = require('alfy');
+const arvish = require('arvish');
 
-alfy.output([
+arvish.output([
 	{
 		title: 'Foo',
-		subtitle: alfy.input
+		subtitle: arvish.input
 	}
 ]);

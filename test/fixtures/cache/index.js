@@ -1,13 +1,13 @@
 'use strict';
-const alfy = require('alfy');
+const arvish = require('arvish');
 
-if (alfy.input === 'foo') {
-	alfy.config.set('foo', 'bar');
+if (arvish.input === 'foo') {
+	arvish.config.set('foo', 'bar');
 }
 
-alfy.output([
+arvish.output([
 	{
-		title: alfy.input,
-		subtitle: alfy.config.get(alfy.input)
+		title: arvish.input,
+		subtitle: arvish.config.get(arvish.input)
 	}
 ]);
