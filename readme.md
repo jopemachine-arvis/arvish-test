@@ -1,4 +1,4 @@
-# arvis-test [![BuildStatus](https://api.travis-ci.com/jopemachine/arvish-test.svg)](https://www.npmjs.com/package/arvish-test)
+# arvish-test [![BuildStatus](https://api.travis-ci.com/jopemachine/arvish-test.svg)](https://www.npmjs.com/package/arvish-test)
 
 > Test your [arvish](https://github.com/jopemachine/arvish) workflows
 
