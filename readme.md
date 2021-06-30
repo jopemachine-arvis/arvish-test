@@ -4,7 +4,7 @@
 
 This lib is inspired and cloned from [alfy-test](https://github.com/SamVerschueren/alfy-test).
 
-If you trying to use this lib, please ensure API is a little different from [alfy-test](https://github.com/SamVerschueren/alfy-test).
+If you trying to use this lib, please note that API is a little different from [alfy-test](https://github.com/SamVerschueren/alfy-test).
 
 * Some environment variables are not supported yet.
 
