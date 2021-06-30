@@ -5,6 +5,6 @@ sudo: true
 os:
 - osx
 install:
-- npm install && npm run build
+- npm install
 script:
 - npm run test
