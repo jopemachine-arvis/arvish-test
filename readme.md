@@ -39,9 +39,9 @@ test('foo', async t => {
 
 ## API
 
-### alfyTest(options?)
+### arvishTest(options?)
 
-Returns an [alfy](#alfyinput) instance.
+Returns an mock arvish instance.
 
 ### options
 
