@@ -1,6 +1,6 @@
 # arvish-test [![BuildStatus](https://api.travis-ci.com/jopemachine/arvish-test.svg)](https://www.npmjs.com/package/arvish-test)
 
-> Test your [arvish](https://github.com/jopemachine/arvish) workflows
+> Test your [arvish](https://github.com/jopemachine/arvish) extensions
 
 This lib is inspired and cloned from [alfy-test](https://github.com/SamVerschueren/alfy-test).
 

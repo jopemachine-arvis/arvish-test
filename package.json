@@ -1,7 +1,7 @@
 {
   "name": "arvish-test",
   "version": "0.0.2",
-  "description": "Test your Arvish workflows",
+  "description": "Test your Arvish extensions",
   "main": "index.js",
   "scripts": {
     "test": "ava"
