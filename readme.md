@@ -1,4 +1,10 @@
-# arvish-test [![BuildStatus](https://api.travis-ci.com/jopemachine/arvish-test.svg)](https://www.npmjs.com/package/arvish-test)
+# arvish-test
+
+[![BuildStatus](https://api.travis-ci.com/jopemachine/arvish-test.svg)](https://www.npmjs.com/package/arvish-test)
+[![NPM download total](https://img.shields.io/npm/dt/arvish-test)](http://badge.fury.io/js/arvish-test)
+[![NPM version](https://badge.fury.io/js/arvish-test.svg)](http://badge.fury.io/js/arvish-test)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
 
 > Test your [arvish](https://github.com/jopemachine/arvish) extensions
 
