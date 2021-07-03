@@ -12,15 +12,14 @@ This lib is inspired and cloned from [alfy-test](https://github.com/SamVerschuer
 
 If you trying to use this lib, please note that API is a little different from [alfy-test](https://github.com/SamVerschueren/alfy-test).
 
-* Some environment variables are not supported yet.
+* Some environment variables are not supported yet. You could check which envs is supported on [here](https://github.com/jopemachine/arvish-test/blob/master/lib/env.js)
 
 * XML scriptfilter not supported.
-
 
 ## Install
 
 ```
-$ npm install arvish-test
+$ npm install --save-dev arvish-test
 ```
 
 ## Usage
@@ -32,6 +31,7 @@ import arvishTest from 'arvish-test';
 test('foo', async t => {
 	const arvish = arvishTest();
 
+	// Note: API is different from 'alfy-test'
 	const result = await arvish("node abc.js 'some_query'");
 
 	t.deepEqual(result, [
@@ -53,28 +53,17 @@ Returns an mock arvish instance.
 
 Type: `object`
 
-#### userConfig
+You can put unsupported environment variables values through `options`
 
-Type: `object`
-
-A JSON object representing the user configuration.
-
-#### version
-
-Type: `string`\
-Default: `'3.0.3'`
-
-Alfred version.
-
-### arvish(input)
+### arvish(script)
 
 Returns a `Promise` that returns the `items` of the workflow.
 
-#### input
+#### script
 
 Type: `string`
 
-Workflow input.
+Script to test.
 
 #### .config
 
@@ -83,3 +72,8 @@ The [arvish config](https://github.com/jopemachine/arvish) instance.
 #### .cache
 
 The [arvish cache](https://github.com/jopemachine/arvish) instance.
+
+
+## Related
+
+- [arvish](https://github.com/jopemachine/arvish) - Arvis workflow, plugin creator tools
