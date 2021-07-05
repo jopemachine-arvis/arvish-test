@@ -10,6 +10,24 @@ const jsonParse = require('parse-json');
 const env = require('./lib/env');
 const { ArvishTestError } = require('./lib/error');
 
+const replaceAll = (str, search, replace) => {
+	return str.split(search).join(replace);
+}
+
+const applyVarsToScript = (script, vars) => {
+	if (!vars) return script;
+
+	for (const key of Object.keys(vars)) {
+		const newStr = vars[key].split(' ').filter((str) => str).join('\\ ');
+		script = replaceAll(script, `'{${key}}'`, newStr);
+		script = replaceAll(script, `"{${key}}"`, newStr);
+		script = replaceAll(script, `{${key}}`, newStr);
+		script = replaceAll(script, `"${key}"`, newStr);
+		script = replaceAll(script, `'${key}'`, newStr);
+	}
+	return script;
+}
+
 module.exports = options => {
 	options = {
 		...options,
@@ -17,10 +35,12 @@ module.exports = options => {
 		extension_cache: tempy.directory()
 	};
 
-	const arvishTest = async (input) => {
-		if (!input) {
-			throw new AlfyTestError('Input value must exist.');
+	const arvishTest = async (script) => {
+		if (!script) {
+			throw new AlfyTestError('Set script to test.');
 		}
+
+		script = applyVarsToScript(script, options.vars);
 
 		const filePath = await findUp([
 			'arvis-workflow.json',
@@ -37,8 +57,8 @@ module.exports = options => {
 		info.cache = options.extension_cache;
 
 		// Assume in other os, node path is given in PATH.
-		const { stdout } = await execa.command(input, {
-			env: env(info, options),
+		const { stdout } = await execa.command(script, {
+			env: env(info, options.envs),
 			preferLocal: true,
 			localDir: __dirname
 		});

@@ -10,11 +10,12 @@
 
 This lib is inspired and cloned from [alfy-test](https://github.com/SamVerschueren/alfy-test).
 
-If you trying to use this lib, please note that API is a little different from [alfy-test](https://github.com/SamVerschueren/alfy-test).
+If you're trying to use this lib, please note that **API is different** from [alfy-test](https://github.com/SamVerschueren/alfy-test).
 
 * Some environment variables are not supported yet. You could check which envs is supported on [here](https://github.com/jopemachine/arvish-test/blob/master/lib/env.js)
 
 * XML scriptfilter not supported.
+
 
 ## Install
 
@@ -25,14 +26,19 @@ $ npm install --save-dev arvish-test
 ## Usage
 
 ```js
+// Note: API is different from 'alfy-test'.
 import test from 'ava';
 import arvishTest from 'arvish-test';
 
 test('foo', async t => {
-	const arvish = arvishTest();
+	const arvish = arvishTest({
+		vars: {
+			query: 'foo bar'
+		}
+	});
 
-	// Note: API is different from 'alfy-test'
-	const result = await arvish("node abc.js 'some_query'");
+	// Below script is replaced with "node index.js foo\\ bar"
+	const result = await arvish("node index.js {query}");
 
 	t.deepEqual(result, [
 		{
@@ -53,7 +59,24 @@ Returns an mock arvish instance.
 
 Type: `object`
 
-You can put unsupported environment variables values through `options`
+#### version
+
+Type: `string`\
+Default: `arvish-test`
+
+Arvis version.
+
+#### env
+
+Type: `object`\
+
+You can put unsupported environment variables values through `env`
+
+#### vars
+
+Type: `object`\
+
+You can put `query` or other variables `vars`
 
 ### arvish(script)
 
